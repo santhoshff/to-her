@@ -1,0 +1,168 @@
+:root {
+    --primary-color: #64ffda;
+    --bg-color: #0a192f;
+    --text-color: #e6f1ff;
+    --input-bg: rgba(255, 255, 255, 0.05);
+    --input-border: rgba(255, 255, 255, 0.1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: var(--bg-color);
+    overflow: hidden;
+    font-family: 'Inter', sans-serif;
+    color: var(--text-color);
+}
+
+#container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    /* Particles on top */
+    pointer-events: none;
+    /* Let clicks pass if needed? No, scene needs interactivity usually, but input is fixed on top. */
+}
+
+#aurora-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    /* Aurora behind particles */
+    background: #000;
+    /* Fallback */
+}
+
+.header {
+    position: fixed;
+    top: 2rem;
+    left: 2rem;
+    text-align: left;
+    z-index: 10;
+    pointer-events: none;
+}
+
+.header h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    letter-spacing: -0.05em;
+    /* Gradient Text Effect */
+    background: linear-gradient(to right, #40ffaa, #4079ff, #40ffaa, #4079ff, #40ffaa);
+    background-size: 200% auto;
+    color: transparent;
+    -webkit-background-clip: text;
+    background-clip: text;
+    animation: gradientMove 3s linear infinite;
+}
+
+@keyframes gradientMove {
+    0% {
+        background-position: 0% center;
+    }
+
+    100% {
+        background-position: -200% center;
+    }
+}
+
+.header p {
+    font-size: 0.875rem;
+    opacity: 0.7;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}
+
+.input-container {
+    position: fixed;
+    bottom: 3rem;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    max-width: 600px;
+    padding: 0 1.5rem;
+    z-index: 10;
+}
+
+.input-wrapper {
+    display: flex;
+    align-items: center;
+    background: rgba(10, 25, 47, 0.7);
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--input-border);
+    border-radius: 2rem;
+    /* More rounded as per request vibe */
+    padding: 0.5rem 1rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.input-wrapper:focus-within {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 20px rgba(100, 255, 218, 0.1);
+}
+
+input {
+    flex: 1;
+    background: transparent;
+    border: none;
+    color: var(--text-color);
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
+    padding: 0.75rem 1rem;
+    outline: none;
+}
+
+input::placeholder {
+    color: rgba(230, 241, 255, 0.3);
+}
+
+button {
+    background: transparent;
+    border: none;
+    color: var(--text-color);
+    cursor: pointer;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+button:hover {
+    color: var(--primary-color);
+}
+
+#typeBtn {
+    background: rgba(100, 255, 218, 0.1);
+    color: var(--primary-color);
+    border-radius: 1.5rem;
+    padding: 0.5rem 1.25rem;
+    margin-left: 0.5rem;
+}
+
+#typeBtn:hover {
+    background: rgba(100, 255, 218, 0.2);
+}
+
+.button-content {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: 600;
+}
+
+#micBtn.active {
+    color: #ff4040 !important;
+    text-shadow: 0 0 10px #ff4040;
+}

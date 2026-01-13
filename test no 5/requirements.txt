@@ -1,0 +1,10 @@
+flask
+flask-cors
+requests
+python-dotenv
+elevenlabs
+sounddevice
+openai
+pillow
+langchain_community
+google-generativeai
